@@ -8,6 +8,8 @@ public class MainMenuController : MonoBehaviour
 
     [Header("Panel")]
     public GameObject panelLevel;
+    public GameObject panelAturanMain;
+    public GameObject panelSetting;
 
     //=========================
     // Start
@@ -16,7 +18,10 @@ public class MainMenuController : MonoBehaviour
     private void Start()
     {
         mainMenu.SetActive(true);
+
         panelLevel.SetActive(false);
+        panelAturanMain.SetActive(false);
+        panelSetting.SetActive(false);
     }
 
     //=========================
@@ -30,12 +35,35 @@ public class MainMenuController : MonoBehaviour
     }
 
     //=========================
+    // ATURAN MAIN
+    //=========================
+
+    public void AturanMain()
+    {
+        mainMenu.SetActive(false);
+        panelAturanMain.SetActive(true);
+    }
+
+    //=========================
+    // SETTING
+    //=========================
+
+    public void Setting()
+    {
+        mainMenu.SetActive(false);
+        panelSetting.SetActive(true);
+    }
+
+    //=========================
     // BACK
     //=========================
 
     public void Back()
     {
         panelLevel.SetActive(false);
+        panelAturanMain.SetActive(false);
+        panelSetting.SetActive(false);
+
         mainMenu.SetActive(true);
     }
 
@@ -51,5 +79,14 @@ public class MainMenuController : MonoBehaviour
     public void LEVEL2()
     {
         SceneManager.LoadScene("LEVEL2");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }
