@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [Header("Target")]
-    public int targetMoney = 100;
+    public int targetMoney = 0;
 
     [Header("Money")]
     public int currentMoney = 0;
@@ -57,6 +57,14 @@ public class GameManager : MonoBehaviour
         UpdateMoneyUI();
 
         Debug.Log("Money : " + currentMoney);
+
+        // --- TAMBAHKAN LOGIKA INI ---
+        // Cek apakah uang/koin yang terkumpul sudah mencapai atau melewati target
+        if (currentMoney >= targetMoney)
+        {
+            gameFinished = true;
+            ShowWin(); // Langsung tampilkan panel menang!
+        }
     }
 
     //====================================================
